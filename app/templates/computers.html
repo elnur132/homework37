@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load thumbnail %}
+<body>
+    <a href="{% url 'create' %}">Add</a>
+    {% for computer in computers %}
+        <p>{{ computer.name }}</p>
+        <img src="{{ computer.image|thumbnail_url:'avatar' }}" alt="">
+        <a href="{{ computer.files.url }}" download>Download</a>
+        <a href="{% url 'delete' computer.id %}">Delete</a>
+    {% endfor %}
+</body>
+</html>
